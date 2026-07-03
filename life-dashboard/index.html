@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <div class="dashboard">
+
+    <!-- ── Greeting ── -->
+    <section class="card greeting-section" aria-label="Greeting">
+      <p class="card-title"><span class="icon">🕐</span> Clock &amp; Greeting</p>
+      <div id="greeting-time" class="greeting-time">00:00:00</div>
+      <div id="greeting-date" class="greeting-date">Loading...</div>
+      <div id="greeting-message" class="greeting-message"></div>
+    </section>
+
+    <!-- ── Focus Timer ── -->
+    <section class="card timer-section" aria-label="Focus Timer">
+      <p class="card-title"><span class="icon">⏱️</span> Focus Timer</p>
+      <div class="timer-display">
+        <div id="timer-digits" class="timer-digits">25:00</div>
+        <div id="timer-label" class="timer-label">Pomodoro · 25 min</div>
+      </div>
+      <div class="timer-progress" aria-hidden="true">
+        <div id="timer-bar" class="timer-progress-bar"></div>
+      </div>
+      <div class="timer-buttons">
+        <button id="btn-start" class="btn btn-primary">▶ Start</button>
+        <button id="btn-stop"  class="btn btn-secondary" disabled>⏸ Stop</button>
+        <button id="btn-reset" class="btn btn-secondary">↺ Reset</button>
+      </div>
+    </section>
+
+    <!-- ── To-Do List ── -->
+    <section class="card todo-section" aria-label="To-Do List">
+      <p class="card-title"><span class="icon">✅</span> To-Do List</p>
+
+      <!-- Add task -->
+      <div class="input-row">
+        <input
+          id="todo-input"
+          class="input"
+          type="text"
+          placeholder="Add a new task and press Enter…"
+          maxlength="200"
+          aria-label="New task"
+        />
+        <button id="todo-add-btn" class="btn btn-primary">Add</button>
+      </div>
+
+      <!-- Filters -->
+      <div class="todo-filters" role="group" aria-label="Filter tasks">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="active">Active</button>
+        <button class="filter-btn" data-filter="done">Done</button>
+      </div>
+
+      <!-- List -->
+      <ul id="todo-list" class="todo-list" aria-label="Task list"></ul>
+
+      <!-- Stats -->
+      <div class="todo-stats">
+        <span id="todo-stats-text">0 of 0 tasks done</span>
+        <button id="clear-done-btn" class="clear-done" title="Clear all completed tasks">
+          Clear done
+        </button>
+      </div>
+    </section>
+
+    <!-- ── Quick Links ── -->
+    <section class="card links-section" aria-label="Quick Links">
+      <p class="card-title"><span class="icon">🔗</span> Quick Links</p>
+
+      <!-- Links grid -->
+      <div id="links-grid" class="links-grid"></div>
+
+      <!-- Add link form -->
+      <div class="add-link-form">
+        <input
+          id="link-name-input"
+          class="input"
+          type="text"
+          placeholder="Label (e.g. YouTube)"
+          maxlength="30"
+          aria-label="Link name"
+        />
+        <input
+          id="link-url-input"
+          class="input"
+          type="text"
+          placeholder="URL (e.g. youtube.com)"
+          maxlength="300"
+          aria-label="Link URL"
+        />
+        <button id="link-add-btn" class="btn btn-primary">Add Link</button>
+      </div>
+    </section>
+
+  </div><!-- /.dashboard -->
+
+  <script src="js/app.js"></script>
+</body>
+</html>
