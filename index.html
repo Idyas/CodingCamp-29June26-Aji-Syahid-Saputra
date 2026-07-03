@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="topbar-brand">
+      <span class="topbar-logo">⚡</span>
+      <span class="topbar-title">Life Dashboard</span>
+    </div>
+    <div class="topbar-actions">
+      <!-- Custom Name -->
+      <button id="btn-name" class="icon-btn" title="Set your name">👤</button>
+      <!-- Dark / Light toggle -->
+      <button id="btn-theme" class="icon-btn" title="Toggle light/dark mode">🌙</button>
+    </div>
+  </header>
+
+  <!-- Name Modal -->
+  <div id="name-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-label="Set your name">
+    <div class="modal">
+      <p class="modal-title">What's your name?</p>
+      <input id="name-input" class="input" type="text" placeholder="Enter your name…" maxlength="40" />
+      <div class="modal-actions">
+        <button id="name-save-btn" class="btn btn-primary">Save</button>
+        <button id="name-cancel-btn" class="btn btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="dashboard">
+
+    <!-- ── Greeting ───────────────────────── -->
+    <section class="card greeting-card" aria-label="Greeting">
+      <p class="card-label"><span>🕐</span> Clock &amp; Greeting</p>
+      <div id="greeting-time" class="greeting-time">00:00:00</div>
+      <div id="greeting-date" class="greeting-date"></div>
+      <div id="greeting-msg"  class="greeting-msg"></div>
+    </section>
+
+    <!-- ── Focus Timer ────────────────────── -->
+    <section class="card timer-card" aria-label="Focus Timer">
+      <p class="card-label"><span>⏱️</span> Focus Timer</p>
+
+      <!-- Custom duration row -->
+      <div class="timer-config">
+        <label for="timer-duration-input" class="config-label">Duration (min):</label>
+        <input id="timer-duration-input" class="input input-sm" type="number" min="1" max="120" value="25" />
+        <button id="btn-set-duration" class="btn btn-secondary btn-sm">Set</button>
+      </div>
+
+      <div class="timer-display">
+        <div id="timer-digits" class="timer-digits">25:00</div>
+        <div id="timer-label"  class="timer-label">Pomodoro · 25 min</div>
+      </div>
+      <div class="timer-track" aria-hidden="true">
+        <div id="timer-bar" class="timer-bar"></div>
+      </div>
+      <div class="timer-btns">
+        <button id="btn-start" class="btn btn-primary">▶ Start</button>
+        <button id="btn-stop"  class="btn btn-secondary" disabled>⏸ Stop</button>
+        <button id="btn-reset" class="btn btn-secondary">↺ Reset</button>
+      </div>
+    </section>
+
+    <!-- ── To-Do List ─────────────────────── -->
+    <section class="card todo-card" aria-label="To-Do List">
+      <p class="card-label"><span>✅</span> To-Do List</p>
+
+      <div class="input-row">
+        <input
+          id="todo-input"
+          class="input"
+          type="text"
+          placeholder="Add a new task…"
+          maxlength="200"
+          aria-label="New task"
+        />
+        <button id="todo-add-btn" class="btn btn-primary">Add</button>
+      </div>
+
+      <!-- Sort -->
+      <div class="todo-toolbar">
+        <div class="filter-group" role="group" aria-label="Filter">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="active">Active</button>
+          <button class="filter-btn" data-filter="done">Done</button>
+        </div>
+        <select id="sort-select" class="sort-select" aria-label="Sort tasks">
+          <option value="newest">Newest first</option>
+          <option value="oldest">Oldest first</option>
+          <option value="alpha">A → Z</option>
+          <option value="alpha-desc">Z → A</option>
+        </select>
+      </div>
+
+      <ul id="todo-list" class="todo-list" aria-label="Task list"></ul>
+
+      <div class="todo-footer">
+        <span id="todo-stats"></span>
+        <button id="clear-done-btn" class="link-btn danger">Clear done</button>
+      </div>
+    </section>
+
+    <!-- ── Quick Links ────────────────────── -->
+    <section class="card links-card" aria-label="Quick Links">
+      <p class="card-label"><span>🔗</span> Quick Links</p>
+      <div id="links-grid" class="links-grid"></div>
+      <div class="add-link-form">
+        <input id="link-name-input" class="input" type="text" placeholder="Label (e.g. YouTube)" maxlength="30" aria-label="Link label" />
+        <input id="link-url-input"  class="input" type="text" placeholder="URL (e.g. youtube.com)"  maxlength="300" aria-label="Link URL" />
+        <button id="link-add-btn" class="btn btn-primary">Add Link</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
